@@ -13,7 +13,7 @@ puts ARGV[0].scan(/regex/).join
 |------|--------------|
 | `0-simply_match_school.rb` | Matches `School` |
 | `1-repetition_token_0.rb` | Matches `hbtn` with 2 to 5 `t` (`hbttn` ... `hbttttn`) |
-| `2-repetition_token_1.rb` | Matches `hbtn` with 1 to 4 `t` |
+| `2-repetition_token_1.rb` | Matches `htn` and `hbtn` (the `b` is optional) |
 | `3-repetition_token_2.rb` | Matches `hbtn` with one or more `t` |
 | `4-repetition_token_3.rb` | Matches `hbtn` with zero or more `t` (no square brackets) |
 | `5-beginning_and_end.rb` | Matches a string that starts with `h`, ends with `n`, with any single character between |
