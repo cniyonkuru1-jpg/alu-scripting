@@ -1,2 +1,6 @@
 #!/usr/bin/env ruby
-puts ARGV[0].scan(/\[from:(.*?)\] \[to:(.*?)\] \[flags:(.*?)\]/).join(",")
+
+line = ARGV[0].to_s
+if line =~ /\[from:(.*?)\].*\[to:(.*?)\].*\[flags:(.*?)\]/
+  puts "#{$1},#{$2},#{$3}"
+end

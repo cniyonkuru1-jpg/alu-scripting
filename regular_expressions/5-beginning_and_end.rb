@@ -1,2 +1,6 @@
 #!/usr/bin/env ruby
-puts ARGV[0].scan(/^h.n$/).join
+
+str = ARGV[0].to_s
+if str =~ /\Ah.n\z/
+  puts str
+end
