@@ -12,11 +12,12 @@ def top_ten(subreddit):
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     response = requests.get(url, headers=HEADERS, allow_redirects=False)
 
-    if response.status_code != 200:
+    try:
+        payload = response.json()
+    except ValueError:
         print(None)
         return None
 
-    payload = response.json()
     if not isinstance(payload, dict):
         print(None)
         return None
