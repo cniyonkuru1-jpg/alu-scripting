@@ -8,9 +8,15 @@ HEADERS = {"User-Agent": "api_advanced/1.0 (by u/cniyonkuru1-jpg)"}
 
 
 def top_ten(subreddit):
-    """Print ten hot-post titles for subreddit, or None when it is invalid."""
+    """Print ten hot-post titles, or None when the subreddit is invalid."""
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    response = requests.get(url, headers=HEADERS, allow_redirects=False)
+    response = requests.get(
+        url, headers=HEADERS, allow_redirects=False)
+
+    # A 3xx response may contain search results for an invalid subreddit.
+    if response.status_code != 200:
+        print(None)
+        return None
 
     try:
         payload = response.json()
@@ -36,5 +42,7 @@ def top_ten(subreddit):
         if not isinstance(post, dict):
             continue
         post_data = post.get("data")
-        if isinstance(post_data, dict) and "title" in post_data:
-            print(post_data["title"])
+        if isinstance(post_data, dict):
+            title = post_data.get("title")
+            if isinstance(title, str):
+                print(title)
