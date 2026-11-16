@@ -11,7 +11,7 @@ def top_ten(subreddit):
     """Print ten hot-post titles, or None when the subreddit is invalid."""
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     response = requests.get(
-        url, headers=HEADERS, allow_redirects=False)
+        url, headers=HEADERS, params={"limit": 10}, allow_redirects=False)
 
     # A 3xx response may contain search results for an invalid subreddit.
     if response.status_code != 200:
