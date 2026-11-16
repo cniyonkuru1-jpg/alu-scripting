@@ -9,9 +9,9 @@ HEADERS = {"User-Agent": "api_advanced/1.0 (by u/cniyonkuru1-jpg)"}
 
 def top_ten(subreddit):
     """Print ten hot-post titles, or None when the subreddit is invalid."""
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     response = requests.get(
-        url, headers=HEADERS, params={"limit": 10}, allow_redirects=False)
+        url, headers=HEADERS, allow_redirects=False)
 
     # Do not use search results returned by Reddit for invalid subreddits.
     status = getattr(response, "status_code", 200)
