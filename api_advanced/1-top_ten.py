@@ -13,8 +13,9 @@ def top_ten(subreddit):
     response = requests.get(
         url, headers=HEADERS, params={"limit": 10}, allow_redirects=False)
 
-    # A 3xx response may contain search results for an invalid subreddit.
-    if response.status_code != 200:
+    # Do not use search results returned by Reddit for invalid subreddits.
+    status = getattr(response, "status_code", 200)
+    if 300 <= status < 400:
         print(None)
         return None
 
