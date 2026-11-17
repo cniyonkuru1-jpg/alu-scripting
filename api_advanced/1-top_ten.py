@@ -15,7 +15,7 @@ def top_ten(subreddit):
 
     # Do not use search results returned by Reddit for invalid subreddits.
     status = getattr(response, "status_code", 200)
-    if 300 <= status < 400:
+    if status != 200:
         print(None)
         return None
 
